@@ -16,6 +16,7 @@ sys.path.insert(0, REPO_ROOT)
 os.chdir(REPO_ROOT)
 
 import app as flask_app  # noqa: E402
+import _auth_support  # noqa: E402
 
 
 def _level(education_text):
@@ -34,7 +35,7 @@ class RecommendApiTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.client = flask_app.app.test_client()
+        cls.client = _auth_support.logged_in_client()
 
     def post(self, **payload):
         return self.client.post('/recommend', json=payload)

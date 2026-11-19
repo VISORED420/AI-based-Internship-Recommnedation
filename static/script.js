@@ -1,9 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('recommendation-form');
+    const liveJobsBtn = document.getElementById('live-jobs-btn');
     const resultsContainer = document.getElementById('results-container');
     const recommendationsDiv = document.getElementById('recommendations');
     const loadingDiv = document.getElementById('loading');
     const errorDiv = document.getElementById('error-message');
+
+    // Carry the same profile over to the live JSearch search page.
+    if (liveJobsBtn) {
+        liveJobsBtn.addEventListener('click', () => {
+            const formData = new FormData(form);
+            const params = new URLSearchParams();
+            const pairs = [
+                ['skills', (formData.get('skills') || '').trim()],
+                ['qualification', formData.get('education') || ''],
+                ['sector', formData.get('sector_interests') || ''],
+                ['location', formData.get('location') || '']
+            ];
+            pairs.forEach(([key, value]) => { if (value) params.set(key, value); });
+            window.location.href = '/jobs' + (params.toString() ? '?' + params.toString() : '');
+        });
+    }
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault(); // Stop the form from reloading the page
@@ -43,6 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(candidateData),
             });
+
+            // Session expired or not logged in -> send the user to the login form
+            if (response.status === 401) {
+                window.location.href = '/login?next=' + encodeURIComponent(window.location.pathname);
+                return;
+            }
 
             const payload = await response.json().catch(() => null);
 

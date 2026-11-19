@@ -1,11 +1,21 @@
 from flask import Flask, render_template, request, jsonify
+import logging
 import os
 import pandas as pd
 import re
 
 from ml_recommender import build_model, synonym_expansions
+from env_loader import load_env
+import auth
+import experience_filter
+import job_matching
+import jobs_api
+
+# Populate RAPIDAPI_KEY & friends from .env without overriding real env vars.
+load_env()
 
 app = Flask(__name__)
+auth.init_app(app)
 
 CSV_PATH = 'data/internship.csv'
 
@@ -160,6 +170,7 @@ STATE_TO_CITIES = {
 }
 
 @app.route('/')
+@auth.login_required
 def home():
     """Serves your main HTML page and passes the list of skills."""
     return render_template('index.html', all_skills=sorted(list(all_skills)))
@@ -315,6 +326,7 @@ def rank_internships(qualification='', skills='', sector='', location='',
 
 
 @app.route('/recommend', methods=['POST'])
+@auth.login_required
 def recommend():
     """
     API endpoint that receives candidate data and returns recommendations.
@@ -353,6 +365,113 @@ def recommend():
     return jsonify(recommendations)
 
 
+# --- External job search (JSearch / RapidAPI) --------------------------------
+# The API key stays server-side: the browser only ever talks to these routes.
+
+JOB_SEARCH_COUNTRIES = (
+    ('in', 'India'), ('us', 'United States'), ('gb', 'United Kingdom'),
+    ('ca', 'Canada'), ('au', 'Australia'), ('ae', 'United Arab Emirates'),
+    ('sg', 'Singapore'), ('de', 'Germany'), ('nz', 'New Zealand'),
+)
+
+
+@app.route('/jobs')
+@auth.login_required
+def jobs_page():
+    """Live job search page backed by the JSearch API."""
+    args = request.args
+    profile = job_matching.build_profile(
+        skills=args.get('skills', ''),
+        qualification=args.get('qualification', ''),
+        sector=args.get('sector', ''),
+        location=args.get('location', ''),
+    )
+    # A profile with skills but no keyword still describes a searchable role.
+    prefill_query = (args.get('q') or ' '.join(profile['skills'][:2])).strip()
+
+    return render_template(
+        'jobs.html',
+        countries=JOB_SEARCH_COUNTRIES,
+        default_country=jobs_api.default_country(),
+        date_options=jobs_api.DATE_POSTED_VALUES,
+        employment_options=jobs_api.EMPLOYMENT_TYPES,
+        work_modes=jobs_api.WORK_MODES,
+        api_configured=jobs_api.is_configured(),
+        profile=profile,
+        prefill_query=prefill_query,
+        prefill_location=args.get('location', ''),
+        entry_level=((args.get('entry_level') or '1').strip().lower()
+                     not in ('0', 'false', 'no', 'off')),
+    )
+
+
+@app.route('/api/jobs')
+@auth.login_required
+def jobs_search():
+    """Proxy one JSearch query. Returns JSON, never the API key."""
+    args = request.args
+    profile = job_matching.build_profile(
+        skills=args.get('skills', ''),
+        qualification=args.get('qualification', ''),
+        sector=args.get('sector', ''),
+        location=args.get('location', ''),
+    )
+
+    # With a profile but no keyword, search whatever the profile describes.
+    keyword = (args.get('q') or '').strip()
+    if not keyword and not (args.get('location') or '').strip() and profile['skills']:
+        keyword = ' '.join(profile['skills'][:2])
+
+    entry_level = ((args.get('entry_level') or '1').strip().lower()
+                   not in ('0', 'false', 'no', 'off'))
+
+    try:
+        result = jobs_api.search_jobs(
+            keyword=keyword,
+            location=args.get('location', ''),
+            country=args.get('country'),
+            date_posted=args.get('date_posted', 'all'),
+            employment_types=args.get('employment_type', ''),
+            work_mode=args.get('work_mode', 'all'),
+            page=args.get('page', 1),
+            cursor=args.get('cursor', ''),
+            # Documented /search-v2 parameter; only the no-experience value suits internships.
+            job_requirements=('no_experience',) if entry_level else (),
+            num_pages=args.get('num_pages', jobs_api.DEFAULT_NUM_PAGES),
+        )
+    except jobs_api.JobsApiError as exc:
+        response = jsonify({'error': exc.message, 'code': exc.code})
+        response.status_code = exc.status
+        if exc.status == 429:
+            response.headers['Retry-After'] = '60'
+        return response
+
+    # Belt-and-braces: Google's requirement matching is advisory, so the drop is
+    # repeated locally on title seniority and stated years.
+    if entry_level:
+        kept, dropped = experience_filter.filter_internships(result['jobs'])
+        result['jobs'] = kept
+        result['filtered_out'] = len(dropped)
+        result['filtered_samples'] = dropped[:5]
+    else:
+        result['filtered_out'] = 0
+        result['filtered_samples'] = []
+    result['entry_level'] = entry_level
+    result['max_experience_years'] = experience_filter.max_experience_years()
+    result['count'] = len(result['jobs'])   # count must describe the filtered list
+
+    # Scoring happens after the cache lookup, so cached payloads stay profile-free.
+    result['jobs'] = job_matching.rank_jobs(result['jobs'], profile)
+    result['profile'] = {
+        'active': profile['active'],
+        'skills': profile['skills'],
+        'sector': profile['sector'],
+        'qualification': profile['qualification'],
+        'location': profile['location'],
+    }
+    return jsonify(result)
+
+
 @app.route('/health', methods=['GET'])
 def health():
     """Liveness/readiness probe for App Runner and load balancers."""
@@ -365,9 +484,35 @@ def health():
             'fitted': ml_model.fitted,
         },
         'dataset': {'records': int(len(internships_df)), 'synthetic': DATA_IS_SYNTHETIC},
+        'jobs_api': {'provider': 'jsearch', 'configured': jobs_api.is_configured(),
+                     'cache_entries': jobs_api.cache_size()},
     })
 
+_PROBE_LOG_PATTERN = re.compile(r'"POST / HTTP/1\.[01]" 405')
+
+
+def quiet_probe_noise(logger_name='werkzeug'):
+    """Drop access-log lines caused by other software probing this port.
+    
+    Steam's client opens connections to localhost:5000 and posts to '/', which no
+    route here accepts, so the dev log fills with 405s. Only that exact pattern is
+    filtered; every real request is still logged. Returns the filter for testing.
+    """
+    class _DropProbePosts(logging.Filter):
+        def filter(self, record):
+            try:
+                message = record.getMessage()
+            except Exception:  # pragma: no cover - defensive
+                return True
+            return not _PROBE_LOG_PATTERN.search(message)
+
+    probe_filter = _DropProbePosts()
+    logging.getLogger(logger_name).addFilter(probe_filter)
+    return probe_filter
+
+
 if __name__ == '__main__':
+    quiet_probe_noise()
     debug = os.environ.get('FLASK_DEBUG', '').lower() in ('1', 'true', 'yes', 'on')
     host = os.environ.get('HOST', '127.0.0.1')
     port = int(os.environ.get('PORT', 5000))

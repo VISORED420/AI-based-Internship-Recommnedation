@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - PM Internship Scheme Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='pm_internship_logo_eng.svg') }}" alt="Govt of India Logo" class="logo">
+            <span class="logo-text">PM Internship Scheme</span>
+            <span class="logo-text">AI-Based PM Internship Finder</span>
+        </div>
+        <nav>
+            <a href="{{ url_for('auth.login') }}">Log in</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="form-container auth-container">
+            <h1>Create Account</h1>
+            <p>Register with your email to save your access to the recommender.</p>
+
+            {% if error %}
+            <p class="auth-error" role="alert">{{ error }}</p>
+            {% endif %}
+
+            <form method="post" action="{{ url_for('auth.register') }}">
+                <div class="form-group">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" value="{{ form.name }}"
+                           autocomplete="name" maxlength="60" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" value="{{ form.email }}"
+                           autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password (at least 8 characters)</label>
+                    <input type="password" id="password" name="password"
+                           autocomplete="new-password" minlength="8" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm">Confirm password</label>
+                    <input type="password" id="confirm" name="confirm"
+                           autocomplete="new-password" minlength="8" required>
+                </div>
+                <button type="submit">Create Account</button>
+            </form>
+
+            <p class="auth-switch">Already registered?
+                <a href="{{ url_for('auth.login') }}">Log in</a>
+            </p>
+            <p class="auth-note">Accounts are stored locally in this prototype. Do not reuse a
+                password from another service.</p>
+        </div>
+    </main>
+</body>
+</html>

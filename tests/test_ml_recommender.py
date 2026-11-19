@@ -13,6 +13,7 @@ sys.path.insert(0, REPO_ROOT)
 os.chdir(REPO_ROOT)
 
 import app as flask_app  # noqa: E402
+import _auth_support  # noqa: E402
 from ml_recommender import TfidfRecommender, build_model, normalize_text  # noqa: E402
 
 
@@ -99,7 +100,7 @@ class RankingTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.client = flask_app.app.test_client()
+        cls.client = _auth_support.logged_in_client()
 
     def test_education_eligibility_holds_in_every_mode(self):
         for qualification in ('10th Pass', '12th Pass', 'Diploma'):
@@ -203,7 +204,7 @@ class RecommendApiMlTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.client = flask_app.app.test_client()
+        cls.client = _auth_support.logged_in_client()
 
     def post(self, **payload):
         return self.client.post('/recommend', json=payload)

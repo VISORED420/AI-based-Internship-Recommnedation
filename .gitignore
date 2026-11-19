@@ -31,3 +31,8 @@ data/external/raw/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Local auth database and generated session key
+data/*.db
+data/*.db-journal
+data/secret_key

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Job Search - PM Internship Scheme Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='pm_internship_logo_eng.svg') }}" alt="Govt of India Logo" class="logo">
+            <img src="{{ url_for('static', filename='download.svg') }}" alt="Govt of India Logo" class="logo">
+            <span class="logo-text">PM Internship Scheme</span>
+            <span class="logo-text">AI-Based PM Internship Finder</span>
+        </div>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('jobs_page') }}" class="nav-active">Live Jobs</a>
+            <a href="https://pminternship.mca.gov.in/login/#eligibility-criteria">Eligibility</a>
+            {% if current_user %}
+            <span class="nav-user">Signed in as {{ current_user['name'] }}</span>
+            <form method="post" action="{{ url_for('auth.logout') }}" class="nav-logout-form">
+                <button type="submit" class="login-btn">Logout</button>
+            </form>
+            {% endif %}
+        </nav>
+    </header>
+
+    <p class="demo-banner" role="note">
+        <strong>Live listings from JSearch.</strong> Results come from public job boards through
+        RapidAPI. This prototype shows the listing and links out to the original posting — it never
+        applies on your behalf, and listings can expire at any time.
+    </p>
+
+    <main class="container jobs-page">
+        <div class="form-container">
+            <h1>Live Job Search 🔎</h1>
+            <p>Search fresh public job postings by title, skill or location.</p>
+
+            {% if profile and profile.active %}
+            <div class="profile-strip">
+                <div>
+                    <strong>Matching your profile:</strong>
+                    {% if profile.skills %}<span class="profile-skills">{{ profile.skills|join(', ') }}</span>{% endif %}
+                    {% if profile.sector %} · sector {{ profile.sector }}{% endif %}
+                </div>
+                <a href="{{ url_for('home') }}">Change profile</a>
+            </div>
+            {% endif %}
+
+            {% if not api_configured %}
+            <p class="auth-error" role="alert">
+                Live job search is not configured on this server. Set <code>RAPIDAPI_KEY</code>
+                in the environment (or <code>.env</code>) and restart the app.
+            </p>
+            {% endif %}
+
+            <form id="job-search-form" class="jobs-filters">
+                <input type="hidden" name="skills" value="{{ profile.skills|join(', ') if profile else '' }}">
+                <input type="hidden" name="qualification" value="{{ profile.qualification if profile else '' }}">
+                <input type="hidden" name="sector" value="{{ profile.sector if profile else '' }}">
+                <div class="form-group">
+                    <label for="q">Job title, skill or keyword</label>
+                    <input type="search" id="q" name="q" placeholder="e.g. python developer, data analyst"
+                           maxlength="120" autocomplete="off" value="{{ prefill_query }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="e.g. Bangalore, Mumbai"
+                           maxlength="80" autocomplete="off" value="{{ prefill_location }}">
+                </div>
+
+                <div class="filter-row">
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" name="country">
+                            {% for code, label in countries %}
+                            <option value="{{ code }}"{% if code == default_country %} selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date_posted">Posted within</label>
+                        <select id="date_posted" name="date_posted">
+                            <option value="all">Any time</option>
+                            <option value="today">Last 24 hours</option>
+                            <option value="3days">Last 3 days</option>
+                            <option value="week">Last 7 days</option>
+                            <option value="month">Last 30 days</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="filter-row">
+                    <div class="form-group">
+                        <label for="employment_type">Employment type</label>
+                        <select id="employment_type" name="employment_type">
+                            <option value="">Any type</option>
+                            {% for value in employment_options %}
+                            <option value="{{ value }}">{{ value|capitalize }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="work_mode">Work mode</label>
+                        <select id="work_mode" name="work_mode">
+                            <option value="all">Any</option>
+                            <option value="remote">Remote only</option>
+                            <option value="onsite">On-site only</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label for="entry_level">
+                        <input type="checkbox" id="entry_level" name="entry_level" value="1"
+                               {% if entry_level %}checked{% endif %}>
+                        Entry level only — hide roles that require experience
+                    </label>
+                </div>
+
+                <p class="filter-note">
+                    The JSearch data has no hybrid flag, so only remote and on-site can be
+                    filtered exactly; hybrid roles appear under "Any". Postings are scored
+                    against your skills from the description text — live listings carry no
+                    structured skill list, and they expose no education requirement, so your
+                    qualification is shown but cannot be enforced here.
+                </p>
+
+                <button type="submit" id="job-submit-btn">Search Jobs</button>
+            </form>
+        </div>
+
+        <div id="jobs-results-container" class="hidden">
+            <div class="jobs-results-header">
+                <h2>Matching Jobs</h2>
+                <p id="jobs-summary" class="mode-note" aria-live="polite"></p>
+            </div>
+
+            <div id="jobs-results" class="jobs-grid" aria-live="polite"></div>
+
+            <div id="jobs-loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Searching live job boards...</p>
+            </div>
+
+            <p id="jobs-error" class="hidden" role="alert"></p>
+            <p id="jobs-empty" class="empty-state hidden"></p>
+
+            <div class="load-more-wrap">
+                <button type="button" id="load-more-btn" class="load-more-btn hidden">Load more jobs</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        window.JOBS_CONFIG = { apiConfigured: {{ 'true' if api_configured else 'false' }} };
+    </script>
+    <script src="{{ url_for('static', filename='jobs.js') }}"></script>
+</body>
+</html>

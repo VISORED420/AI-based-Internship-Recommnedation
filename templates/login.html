@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - PM Internship Scheme Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='pm_internship_logo_eng.svg') }}" alt="Govt of India Logo" class="logo">
+            <span class="logo-text">PM Internship Scheme</span>
+            <span class="logo-text">AI-Based PM Internship Finder</span>
+        </div>
+        <nav>
+            <a href="{{ url_for('auth.register') }}">Create account</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="form-container auth-container">
+            <h1>Log In</h1>
+            <p>Sign in to get your internship recommendations.</p>
+
+            {% if error %}
+            <p class="auth-error" role="alert">{{ error }}</p>
+            {% endif %}
+            {% for message in get_flashed_messages() %}
+            <p class="auth-notice" role="status">{{ message }}</p>
+            {% endfor %}
+
+            <form method="post" action="{{ url_for('auth.login', next=request.args.get('next')) }}">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" value="{{ form.email }}"
+                           autocomplete="email" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password"
+                           autocomplete="current-password" required>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+
+            <p class="auth-switch">New here?
+                <a href="{{ url_for('auth.register') }}">Create an account</a>
+            </p>
+        </div>
+    </main>
+</body>
+</html>

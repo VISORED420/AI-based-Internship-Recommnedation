@@ -19,10 +19,18 @@
             <span class="logo-text">AI-Based PM Internship Finder</span>
         </div>
         <nav>
-            <a href="#">Home</a>
+            <a href="{{ url_for('home') }}" class="nav-active">Home</a>
+            <a href="{{ url_for('jobs_page') }}">Live Jobs</a>
             <a href="https://pminternship.mca.gov.in/mca-api/files/get-file-by-path?path=U7k3z9vkJ6yFXfPI%2B4IVSnRblplXd0gMWwC7NmtDz3KvID8OvSm5GlAvf3kWvu8ZUpW3UeOTZFPrNIBREASgbtrFpqIz7BnLJtCXCyGMggExnO0bzUc3TuZU3GtUxLggfEZn4%2Bw4Xkl%2FgEYJJg%3D%3D">Guidelines</a>
             <a href="https://pminternship.mca.gov.in/login/#eligibility-criteria">Eligibility</a>
-            <a href="https://pminternship.mca.gov.in/login/" class="login-btn">Login</a>
+            {% if current_user %}
+            <span class="nav-user">Signed in as {{ current_user['name'] }}</span>
+            <form method="post" action="{{ url_for('auth.logout') }}" class="nav-logout-form">
+                <button type="submit" class="login-btn">Logout</button>
+            </form>
+            {% else %}
+            <a href="{{ url_for('auth.login') }}" class="login-btn">Login</a>
+            {% endif %}
             <div id="google_translate_element"></div>
         </nav>
     </header>
@@ -134,6 +142,8 @@
                 </div>
 
                 <button type="submit" id="submit-btn">Get Recommendations</button>
+                <button type="button" id="live-jobs-btn" class="secondary-btn">
+                    Find live jobs for this profile</button>
             </form>
         </div>
 
