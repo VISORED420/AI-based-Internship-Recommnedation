@@ -1,0 +1,17 @@
+{
+  "input_rows": 100000,
+  "sampled_rows": 5000,
+  "education_known_pct": 100.0,
+  "education_distribution": {
+    "Postgraduate": 1669,
+    "B.Tech": 1667,
+    "Graduate": 1664
+  },
+  "job_type_distribution": {
+    "Full-time": 3016,
+    "Internship": 1984
+  },
+  "indian_location_pct": 100.0,
+  "unique_cities": 8,
+  "unique_skills": 38
+}

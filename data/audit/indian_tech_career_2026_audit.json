@@ -1,0 +1,260 @@
+{
+  "source": "indian_tech_career_2026",
+  "file": "indian_tech_career_intelligence_2026.csv",
+  "sha256": "f69a8de12e0d379419e7f9767c74a366366fabab864d20eb6f414bba21ad403c",
+  "downloaded_at_utc": "2026-11-19T14:24:34Z",
+  "total_records": 100000,
+  "total_columns": 33,
+  "exact_duplicate_rows": 0,
+  "exact_duplicate_pct": 0.0,
+  "unique_job_descriptions": 24,
+  "duplicate_description_pct": 99.98,
+  "templated_description_pct": 100.0,
+  "near_duplicate_pct_first_5000": 99.52,
+  "near_duplicate_threshold": 0.9,
+  "unique_descriptions_after_near_dedup_first_5000": 24,
+  "columns": {
+    "job_title": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 24
+    },
+    "job_category": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 6
+    },
+    "company_name": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 12
+    },
+    "company_size": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 4
+    },
+    "industry": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 1
+    },
+    "company_type": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 3
+    },
+    "location_city": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 8
+    },
+    "location_state": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 7
+    },
+    "location_country": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 1
+    },
+    "work_mode": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 3
+    },
+    "salary_minimum": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 85146
+    },
+    "salary_maximum": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 95577
+    },
+    "salary_currency": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 1
+    },
+    "stipend_amount": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 28954
+    },
+    "experience_level": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 2
+    },
+    "experience_required": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 2
+    },
+    "education_required": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 3
+    },
+    "employment_type": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 2
+    },
+    "contract_type": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 2
+    },
+    "skills_extracted": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 6
+    },
+    "skill_count": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 3
+    },
+    "job_description": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 24
+    },
+    "posted_date": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 150
+    },
+    "application_deadline": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 150
+    },
+    "source_platform": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 5
+    },
+    "applicant_count": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 465
+    },
+    "job_benefits": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 5
+    },
+    "technical_domain": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 6
+    },
+    "interview_difficulty": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 3
+    },
+    "probation_period": {
+      "dtype": "object",
+      "missing_pct": 33.5,
+      "distinct": 3
+    },
+    "shift_type": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 3
+    },
+    "is_active": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 2
+    },
+    "career_growth_index": {
+      "dtype": "object",
+      "missing_pct": 0.0,
+      "distinct": 34
+    }
+  },
+  "industry_distribution": {
+    "Information Technology": 100000
+  },
+  "education_distribution": {
+    "Bachelor's Degree": 33414,
+    "MCA / MSc": 33349,
+    "B.E. / B.Tech": 33237
+  },
+  "employment_type_distribution": {
+    "Full-time": 59871,
+    "Internship": 40129
+  },
+  "work_mode_distribution": {
+    "Remote": 40018,
+    "Hybrid": 39654,
+    "On-site": 20328
+  },
+  "country_distribution": {
+    "India": 100000
+  },
+  "top_cities": {
+    "Chennai": 12636,
+    "Noida": 12622,
+    "Gurgaon": 12521,
+    "Delhi NCR": 12515,
+    "Pune": 12452,
+    "Mumbai": 12443,
+    "Hyderabad": 12439,
+    "Bangalore": 12372
+  },
+  "top_states": {
+    "Maharashtra": 24895,
+    "Tamil Nadu": 12636,
+    "Uttar Pradesh": 12622,
+    "Haryana": 12521,
+    "Delhi": 12515,
+    "Telangana": 12439,
+    "Karnataka": 12372
+  },
+  "skills_present_pct": 100.0,
+  "unique_skills": 39,
+  "top_skills": {
+    "python": 33212,
+    "linux": 33134,
+    "html": 16872,
+    "css": 16872,
+    "javascript": 16872,
+    "react": 16872,
+    "node.js": 16872,
+    "express": 16872,
+    "mongodb": 16872,
+    "tailwind css": 16872,
+    "pytorch": 16787,
+    "tensorflow": 16787,
+    "scikit-learn": 16787,
+    "openai api": 16787,
+    "huggingface": 16787,
+    "aws": 16782,
+    "azure": 16782,
+    "cloudformation": 16782,
+    "iam": 16782,
+    "ec2": 16782,
+    "s3": 16782,
+    "architecture design": 16782,
+    "docker": 16697,
+    "kubernetes": 16697,
+    "jenkins": 16697
+  },
+  "unique_companies": 12,
+  "unique_titles": 24,
+  "sample_descriptions": [
+    "we are hiring a passionate machine learning engineer to join our engineering cluster. hands-on experience with core tech workflows preferred.",
+    "we are hiring a passionate full stack developer to join our engineering cluster. hands-on experience with core tech workflows preferred.",
+    "we are hiring a passionate web development intern to join our engineering cluster. hands-on experience with core tech workflows preferred.",
+    "we are hiring a passionate devops intern to join our engineering cluster. hands-on experience with core tech workflows preferred.",
+    "we are hiring a passionate cybersecurity analyst to join our engineering cluster. hands-on experience with core tech workflows preferred."
+  ]
+}

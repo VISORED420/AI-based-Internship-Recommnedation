@@ -1,0 +1,86 @@
+{
+  "description": [
+    "Relevance labels are defined by the criteria below and computed from data/internship.csv,",
+    "never copied from a recommender's output. A record is relevant for a profile when:",
+    "  (a) its parsed education level <= the profile's max_level, and",
+    "  (b) at least one of the profile's any_skills tokens appears as a whole word inside one",
+    "      of the record's required_skills (token 'inventory' matches 'Inventory Management').",
+    "Skill tokens are compared after lower-casing and whitespace collapsing only -- the ML",
+    "synonym table is deliberately NOT used for labelling, so a synonym profile measures",
+    "whether the model can bridge vocabulary the label criteria cannot."
+  ],
+  "profiles": [
+    {
+      "id": "10th_excel_entry",
+      "qualification": "10th Pass",
+      "skills": "Excel, Data Entry",
+      "sector_interested": "",
+      "location_interested": "",
+      "relevance": {"max_level": 0, "any_skills": ["excel", "data entry"]}
+    },
+    {
+      "id": "10th_customer_service",
+      "qualification": "10th Pass",
+      "skills": "Customer Service, Communication",
+      "sector_interested": "",
+      "location_interested": "",
+      "relevance": {"max_level": 0, "any_skills": ["customer service", "communication"]}
+    },
+    {
+      "id": "12th_tally_excel",
+      "qualification": "12th Pass",
+      "skills": "Tally, Excel",
+      "sector_interested": "Finance",
+      "location_interested": "Maharashtra",
+      "relevance": {"max_level": 1, "any_skills": ["tally", "excel"]}
+    },
+    {
+      "id": "12th_support",
+      "qualification": "12th Pass",
+      "skills": "Basic Computer, Troubleshooting",
+      "sector_interested": "Information Technology",
+      "location_interested": "",
+      "relevance": {"max_level": 1, "any_skills": ["basic computer", "troubleshooting"]}
+    },
+    {
+      "id": "12th_synonym_vocabulary",
+      "qualification": "12th Pass",
+      "skills": "MS Excel, Computer Basics",
+      "sector_interested": "",
+      "location_interested": "",
+      "relevance": {"max_level": 1, "any_skills": ["excel", "basic computer"]}
+    },
+    {
+      "id": "diploma_technical",
+      "qualification": "Diploma",
+      "skills": "Troubleshooting, Basic Computer",
+      "sector_interested": "Information Technology",
+      "location_interested": "Tamil Nadu",
+      "relevance": {"max_level": 2, "any_skills": ["troubleshooting", "basic computer"]}
+    },
+    {
+      "id": "diploma_inventory",
+      "qualification": "Diploma",
+      "skills": "Inventory, Excel",
+      "sector_interested": "E-commerce",
+      "location_interested": "",
+      "relevance": {"max_level": 2, "any_skills": ["inventory", "excel"]}
+    },
+    {
+      "id": "btech_python_sql",
+      "qualification": "B.Tech",
+      "skills": "Python, SQL",
+      "sector_interested": "Information Technology",
+      "location_interested": "Karnataka",
+      "relevance": {"max_level": 3, "any_skills": ["python", "sql"]}
+    },
+    {
+      "id": "btech_excel_analysis",
+      "qualification": "B.Tech",
+      "skills": "Excel, Data Analysis",
+      "sector_interested": "Data Science & Analytics",
+      "location_interested": "",
+      "relevance": {"max_level": 3, "any_skills": ["excel", "data analysis"]}
+    }
+  ]
+}

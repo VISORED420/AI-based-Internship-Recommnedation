@@ -1,0 +1,11 @@
+{
+  "dataset": "Uzaib52/indian-tech-career-intelligence-2026",
+  "revision": "a6182954612f555ea3732cff30f36c8bb7901e4b",
+  "url": "https://huggingface.co/datasets/Uzaib52/indian-tech-career-intelligence-2026/resolve/a6182954612f555ea3732cff30f36c8bb7901e4b/indian_tech_career_intelligence_2026.csv",
+  "file": "data/external/raw\\indian_tech_career_intelligence_2026.csv",
+  "sha256": "f69a8de12e0d379419e7f9767c74a366366fabab864d20eb6f414bba21ad403c",
+  "bytes": 59347309,
+  "records": 100000,
+  "license": "MIT (declared in the dataset card)",
+  "license_note": "Synthetic content; real company names attached to fabricated postings. Not used for training, never shown to end users."
+}

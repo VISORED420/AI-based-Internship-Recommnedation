@@ -1,0 +1,1047 @@
+{
+  "evaluated_at_utc": "2026-11-19T14:27:50Z",
+  "benchmark": "evaluation/profiles.json (9 profiles, criteria-derived labels, synthetic catalog of 115 records)",
+  "label_type": "synthetic (criteria computed from dataset fields; no human relevance judgments)",
+  "records_in_catalog": 115,
+  "summaries": {
+    "baseline_rule": {
+      "precision_at_5": 0.7778,
+      "recall_at_5": 0.6451,
+      "ndcg_at_5": 0.8889,
+      "eligibility_violations": 0,
+      "coverage_profiles_with_results": 0.8889,
+      "mean_diversity": 0.6074,
+      "median_latency_ms": 4.95,
+      "per_profile": {
+        "10th_excel_entry": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 0.6666666666666666,
+          "qualification": "10th Pass"
+        },
+        "10th_customer_service": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 4,
+          "diversity": 1.0,
+          "qualification": "10th Pass"
+        },
+        "12th_tally_excel": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 1.0,
+          "qualification": "12th Pass"
+        },
+        "12th_support": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_synonym_vocabulary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "ndcg": 0.0,
+          "returned": 0,
+          "diversity": 0.0,
+          "qualification": "12th Pass"
+        },
+        "diploma_technical": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "diploma_inventory": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "Diploma"
+        },
+        "btech_python_sql": {
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        },
+        "btech_excel_analysis": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        }
+      },
+      "results": {
+        "10th_excel_entry": [
+          "INT-HR-25-104",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101"
+        ],
+        "10th_customer_service": [
+          "INT-MKT-25-102",
+          "INT-IT-25-103",
+          "INT-ECOM-25-101",
+          "INT-HR-25-104"
+        ],
+        "12th_tally_excel": [
+          "INT-FIN-25-106",
+          "INT-ECOM-25-108",
+          "INT-HR-25-104"
+        ],
+        "12th_support": [
+          "INT-IT-25-107",
+          "INT-IT-25-103",
+          "INT-ECOM-25-105",
+          "INT-HLTH-25-109",
+          "INT-ECOM-25-101"
+        ],
+        "12th_synonym_vocabulary": [],
+        "diploma_technical": [
+          "INT-IT-25-107",
+          "INT-IT-25-112",
+          "INT-IT-25-111",
+          "INT-IT-25-103",
+          "INT-ECOM-25-105"
+        ],
+        "diploma_inventory": [
+          "INT-ECOM-25-113",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-108",
+          "INT-MKT-25-102",
+          "INT-FIN-25-106"
+        ],
+        "btech_python_sql": [
+          "INT-IT-25-001",
+          "INT-DS-25-049",
+          "INT-DS-25-026",
+          "INT-ECOM-25-006",
+          "INT-IT-25-009"
+        ],
+        "btech_excel_analysis": [
+          "INT-FIN-25-002",
+          "INT-FIN-25-043",
+          "INT-ECOM-25-066",
+          "INT-DS-25-115",
+          "INT-DS-25-026"
+        ]
+      }
+    },
+    "baseline_hybrid": {
+      "precision_at_5": 0.8889,
+      "recall_at_5": 0.7145,
+      "ndcg_at_5": 1.0,
+      "eligibility_violations": 0,
+      "coverage_profiles_with_results": 1.0,
+      "mean_diversity": 0.6519,
+      "median_latency_ms": 5.14,
+      "per_profile": {
+        "10th_excel_entry": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 0.6666666666666666,
+          "qualification": "10th Pass"
+        },
+        "10th_customer_service": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 4,
+          "diversity": 1.0,
+          "qualification": "10th Pass"
+        },
+        "12th_tally_excel": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 4,
+          "diversity": 1.0,
+          "qualification": "12th Pass"
+        },
+        "12th_support": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_synonym_vocabulary": {
+          "precision": 1.0,
+          "recall": 0.625,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "diploma_technical": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "diploma_inventory": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "btech_python_sql": {
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        },
+        "btech_excel_analysis": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        }
+      },
+      "results": {
+        "10th_excel_entry": [
+          "INT-HR-25-104",
+          "INT-ECOM-25-101",
+          "INT-ECOM-25-105"
+        ],
+        "10th_customer_service": [
+          "INT-IT-25-103",
+          "INT-MKT-25-102",
+          "INT-HR-25-104",
+          "INT-ECOM-25-101"
+        ],
+        "12th_tally_excel": [
+          "INT-FIN-25-106",
+          "INT-ECOM-25-108",
+          "INT-HR-25-104",
+          "INT-MKT-25-102"
+        ],
+        "12th_support": [
+          "INT-IT-25-107",
+          "INT-IT-25-103",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101",
+          "INT-HLTH-25-109"
+        ],
+        "12th_synonym_vocabulary": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109"
+        ],
+        "diploma_technical": [
+          "INT-IT-25-112",
+          "INT-IT-25-111",
+          "INT-IT-25-107",
+          "INT-IT-25-103",
+          "INT-ECOM-25-105"
+        ],
+        "diploma_inventory": [
+          "INT-ECOM-25-113",
+          "INT-ECOM-25-105",
+          "INT-MKT-25-102",
+          "INT-MKT-25-110",
+          "INT-ECOM-25-108"
+        ],
+        "btech_python_sql": [
+          "INT-IT-25-001",
+          "INT-DS-25-049",
+          "INT-DS-25-026",
+          "INT-IT-25-025",
+          "INT-ECOM-25-006"
+        ],
+        "btech_excel_analysis": [
+          "INT-FIN-25-002",
+          "INT-ECOM-25-066",
+          "INT-FIN-25-043",
+          "INT-ECOM-25-113",
+          "INT-FIN-25-106"
+        ]
+      }
+    },
+    "A0 title+sector+skills 1-2": {
+      "precision_at_5": 0.8889,
+      "recall_at_5": 0.7145,
+      "ndcg_at_5": 1.0,
+      "eligibility_violations": 0,
+      "coverage_profiles_with_results": 1.0,
+      "mean_diversity": 0.6963,
+      "median_latency_ms": 1.51,
+      "per_profile": {
+        "10th_excel_entry": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 0.6666666666666666,
+          "qualification": "10th Pass"
+        },
+        "10th_customer_service": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 4,
+          "diversity": 1.0,
+          "qualification": "10th Pass"
+        },
+        "12th_tally_excel": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 1.0,
+          "qualification": "12th Pass"
+        },
+        "12th_support": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_synonym_vocabulary": {
+          "precision": 1.0,
+          "recall": 0.625,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "diploma_technical": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "diploma_inventory": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "Diploma"
+        },
+        "btech_python_sql": {
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "B.Tech"
+        },
+        "btech_excel_analysis": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        }
+      },
+      "results": {
+        "10th_excel_entry": [
+          "INT-HR-25-104",
+          "INT-ECOM-25-101",
+          "INT-ECOM-25-105"
+        ],
+        "10th_customer_service": [
+          "INT-MKT-25-102",
+          "INT-IT-25-103",
+          "INT-HR-25-104",
+          "INT-ECOM-25-101"
+        ],
+        "12th_tally_excel": [
+          "INT-FIN-25-106",
+          "INT-ECOM-25-108",
+          "INT-HR-25-104"
+        ],
+        "12th_support": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109"
+        ],
+        "12th_synonym_vocabulary": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109"
+        ],
+        "diploma_technical": [
+          "INT-IT-25-111",
+          "INT-IT-25-112",
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101"
+        ],
+        "diploma_inventory": [
+          "INT-ECOM-25-113",
+          "INT-ECOM-25-105",
+          "INT-MKT-25-102",
+          "INT-MKT-25-110",
+          "INT-IT-25-112"
+        ],
+        "btech_python_sql": [
+          "INT-DS-25-026",
+          "INT-IT-25-001",
+          "INT-DS-25-049",
+          "INT-ECOM-25-006",
+          "INT-FIN-25-043"
+        ],
+        "btech_excel_analysis": [
+          "INT-FIN-25-002",
+          "INT-ECOM-25-066",
+          "INT-FIN-25-043",
+          "INT-ECOM-25-113",
+          "INT-FIN-25-106"
+        ]
+      }
+    },
+    "A1 skills only 1-1": {
+      "precision_at_5": 0.8889,
+      "recall_at_5": 0.7145,
+      "ndcg_at_5": 1.0,
+      "eligibility_violations": 0,
+      "coverage_profiles_with_results": 1.0,
+      "mean_diversity": 0.6741,
+      "median_latency_ms": 1.48,
+      "per_profile": {
+        "10th_excel_entry": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 0.6666666666666666,
+          "qualification": "10th Pass"
+        },
+        "10th_customer_service": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 4,
+          "diversity": 1.0,
+          "qualification": "10th Pass"
+        },
+        "12th_tally_excel": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 1.0,
+          "qualification": "12th Pass"
+        },
+        "12th_support": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_synonym_vocabulary": {
+          "precision": 1.0,
+          "recall": 0.625,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "diploma_technical": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "diploma_inventory": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "Diploma"
+        },
+        "btech_python_sql": {
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "B.Tech"
+        },
+        "btech_excel_analysis": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "B.Tech"
+        }
+      },
+      "results": {
+        "10th_excel_entry": [
+          "INT-HR-25-104",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101"
+        ],
+        "10th_customer_service": [
+          "INT-MKT-25-102",
+          "INT-IT-25-103",
+          "INT-HR-25-104",
+          "INT-ECOM-25-101"
+        ],
+        "12th_tally_excel": [
+          "INT-FIN-25-106",
+          "INT-ECOM-25-108",
+          "INT-HR-25-104"
+        ],
+        "12th_support": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109",
+          "INT-ECOM-25-101"
+        ],
+        "12th_synonym_vocabulary": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109",
+          "INT-ECOM-25-101"
+        ],
+        "diploma_technical": [
+          "INT-IT-25-107",
+          "INT-IT-25-111",
+          "INT-IT-25-112",
+          "INT-ECOM-25-105",
+          "INT-IT-25-103"
+        ],
+        "diploma_inventory": [
+          "INT-ECOM-25-113",
+          "INT-IT-25-112",
+          "INT-MKT-25-102",
+          "INT-MKT-25-110",
+          "INT-ECOM-25-105"
+        ],
+        "btech_python_sql": [
+          "INT-DS-25-026",
+          "INT-IT-25-001",
+          "INT-DS-25-049",
+          "INT-ECOM-25-006",
+          "INT-FIN-25-043"
+        ],
+        "btech_excel_analysis": [
+          "INT-FIN-25-002",
+          "INT-FIN-25-043",
+          "INT-ECOM-25-066",
+          "INT-ECOM-25-113",
+          "INT-ECOM-25-108"
+        ]
+      }
+    },
+    "A2 title+skills 1-2": {
+      "precision_at_5": 0.8889,
+      "recall_at_5": 0.7145,
+      "ndcg_at_5": 1.0,
+      "eligibility_violations": 0,
+      "coverage_profiles_with_results": 1.0,
+      "mean_diversity": 0.7185,
+      "median_latency_ms": 1.49,
+      "per_profile": {
+        "10th_excel_entry": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 0.6666666666666666,
+          "qualification": "10th Pass"
+        },
+        "10th_customer_service": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 4,
+          "diversity": 1.0,
+          "qualification": "10th Pass"
+        },
+        "12th_tally_excel": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 1.0,
+          "qualification": "12th Pass"
+        },
+        "12th_support": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_synonym_vocabulary": {
+          "precision": 1.0,
+          "recall": 0.625,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "diploma_technical": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "Diploma"
+        },
+        "diploma_inventory": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "Diploma"
+        },
+        "btech_python_sql": {
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "B.Tech"
+        },
+        "btech_excel_analysis": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        }
+      },
+      "results": {
+        "10th_excel_entry": [
+          "INT-HR-25-104",
+          "INT-ECOM-25-101",
+          "INT-ECOM-25-105"
+        ],
+        "10th_customer_service": [
+          "INT-MKT-25-102",
+          "INT-IT-25-103",
+          "INT-HR-25-104",
+          "INT-ECOM-25-101"
+        ],
+        "12th_tally_excel": [
+          "INT-FIN-25-106",
+          "INT-HR-25-104",
+          "INT-ECOM-25-108"
+        ],
+        "12th_support": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-HLTH-25-109",
+          "INT-IT-25-103",
+          "INT-ECOM-25-101"
+        ],
+        "12th_synonym_vocabulary": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-HLTH-25-109",
+          "INT-IT-25-103",
+          "INT-ECOM-25-101"
+        ],
+        "diploma_technical": [
+          "INT-IT-25-111",
+          "INT-IT-25-112",
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-HLTH-25-109"
+        ],
+        "diploma_inventory": [
+          "INT-ECOM-25-113",
+          "INT-MKT-25-102",
+          "INT-MKT-25-110",
+          "INT-ECOM-25-105",
+          "INT-IT-25-112"
+        ],
+        "btech_python_sql": [
+          "INT-DS-25-026",
+          "INT-IT-25-001",
+          "INT-DS-25-049",
+          "INT-ECOM-25-006",
+          "INT-FIN-25-043"
+        ],
+        "btech_excel_analysis": [
+          "INT-FIN-25-002",
+          "INT-ECOM-25-066",
+          "INT-FIN-25-043",
+          "INT-ECOM-25-113",
+          "INT-FIN-25-106"
+        ]
+      }
+    },
+    "A3 title+sector+skills 1-1": {
+      "precision_at_5": 0.8889,
+      "recall_at_5": 0.7145,
+      "ndcg_at_5": 1.0,
+      "eligibility_violations": 0,
+      "coverage_profiles_with_results": 1.0,
+      "mean_diversity": 0.6963,
+      "median_latency_ms": 1.47,
+      "per_profile": {
+        "10th_excel_entry": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 0.6666666666666666,
+          "qualification": "10th Pass"
+        },
+        "10th_customer_service": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 4,
+          "diversity": 1.0,
+          "qualification": "10th Pass"
+        },
+        "12th_tally_excel": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 3,
+          "diversity": 1.0,
+          "qualification": "12th Pass"
+        },
+        "12th_support": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_synonym_vocabulary": {
+          "precision": 1.0,
+          "recall": 0.625,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "diploma_technical": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "diploma_inventory": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "Diploma"
+        },
+        "btech_python_sql": {
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "B.Tech"
+        },
+        "btech_excel_analysis": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        }
+      },
+      "results": {
+        "10th_excel_entry": [
+          "INT-ECOM-25-101",
+          "INT-HR-25-104",
+          "INT-ECOM-25-105"
+        ],
+        "10th_customer_service": [
+          "INT-IT-25-103",
+          "INT-MKT-25-102",
+          "INT-HR-25-104",
+          "INT-ECOM-25-101"
+        ],
+        "12th_tally_excel": [
+          "INT-FIN-25-106",
+          "INT-ECOM-25-108",
+          "INT-HR-25-104"
+        ],
+        "12th_support": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109"
+        ],
+        "12th_synonym_vocabulary": [
+          "INT-IT-25-107",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109"
+        ],
+        "diploma_technical": [
+          "INT-IT-25-107",
+          "INT-IT-25-111",
+          "INT-IT-25-112",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101"
+        ],
+        "diploma_inventory": [
+          "INT-ECOM-25-113",
+          "INT-ECOM-25-105",
+          "INT-MKT-25-102",
+          "INT-MKT-25-110",
+          "INT-IT-25-112"
+        ],
+        "btech_python_sql": [
+          "INT-DS-25-026",
+          "INT-IT-25-001",
+          "INT-DS-25-049",
+          "INT-ECOM-25-006",
+          "INT-FIN-25-043"
+        ],
+        "btech_excel_analysis": [
+          "INT-ECOM-25-066",
+          "INT-FIN-25-002",
+          "INT-FIN-25-043",
+          "INT-ECOM-25-108",
+          "INT-DS-25-115"
+        ]
+      }
+    },
+    "embeddings:all-MiniLM-L6-v2": {
+      "precision_at_5": 0.8667,
+      "recall_at_5": 0.7034,
+      "ndcg_at_5": 0.9799,
+      "eligibility_violations": 0,
+      "coverage_profiles_with_results": 1.0,
+      "mean_diversity": 0.6444,
+      "median_latency_ms": 7.73,
+      "per_profile": {
+        "10th_excel_entry": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "10th Pass"
+        },
+        "10th_customer_service": {
+          "precision": 0.8,
+          "recall": 1.0,
+          "ndcg": 0.9828920819566879,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "10th Pass"
+        },
+        "12th_tally_excel": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "ndcg": 0.9674679834891693,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_support": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "12th Pass"
+        },
+        "12th_synonym_vocabulary": {
+          "precision": 1.0,
+          "recall": 0.625,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "12th Pass"
+        },
+        "diploma_technical": {
+          "precision": 1.0,
+          "recall": 0.5555555555555556,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "diploma_inventory": {
+          "precision": 0.8,
+          "recall": 0.4,
+          "ndcg": 0.8687949224876582,
+          "returned": 5,
+          "diversity": 0.4,
+          "qualification": "Diploma"
+        },
+        "btech_python_sql": {
+          "precision": 1.0,
+          "recall": 0.4166666666666667,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.8,
+          "qualification": "B.Tech"
+        },
+        "btech_excel_analysis": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "ndcg": 1.0,
+          "returned": 5,
+          "diversity": 0.6,
+          "qualification": "B.Tech"
+        }
+      },
+      "results": {
+        "10th_excel_entry": [
+          "INT-HR-25-104",
+          "INT-ECOM-25-101",
+          "INT-ECOM-25-105",
+          "INT-IT-25-103",
+          "INT-MKT-25-102"
+        ],
+        "10th_customer_service": [
+          "INT-MKT-25-102",
+          "INT-IT-25-103",
+          "INT-ECOM-25-101",
+          "INT-ECOM-25-105",
+          "INT-HR-25-104"
+        ],
+        "12th_tally_excel": [
+          "INT-FIN-25-106",
+          "INT-ECOM-25-108",
+          "INT-ECOM-25-105",
+          "INT-HR-25-104",
+          "INT-ECOM-25-101"
+        ],
+        "12th_support": [
+          "INT-IT-25-107",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-101"
+        ],
+        "12th_synonym_vocabulary": [
+          "INT-ECOM-25-108",
+          "INT-ECOM-25-105",
+          "INT-HR-25-104",
+          "INT-FIN-25-106",
+          "INT-HLTH-25-109"
+        ],
+        "diploma_technical": [
+          "INT-IT-25-112",
+          "INT-IT-25-107",
+          "INT-IT-25-111",
+          "INT-IT-25-103",
+          "INT-HLTH-25-109"
+        ],
+        "diploma_inventory": [
+          "INT-ECOM-25-113",
+          "INT-ECOM-25-105",
+          "INT-ECOM-25-108",
+          "INT-FIN-25-106",
+          "INT-ECOM-25-054"
+        ],
+        "btech_python_sql": [
+          "INT-IT-25-001",
+          "INT-DS-25-026",
+          "INT-DS-25-049",
+          "INT-FIN-25-043",
+          "INT-ECOM-25-006"
+        ],
+        "btech_excel_analysis": [
+          "INT-FIN-25-002",
+          "INT-FIN-25-043",
+          "INT-DS-25-115",
+          "INT-DS-25-026",
+          "INT-ECOM-25-066"
+        ]
+      }
+    }
+  },
+  "memory_delta_mb": {
+    "baseline_rule": 0.0,
+    "baseline_hybrid": 0.0,
+    "A0 title+sector+skills 1-2": 0.2,
+    "A1 skills only 1-1": 0.0,
+    "A2 title+skills 1-2": 0.1,
+    "A3 title+sector+skills 1-1": 0.1,
+    "embeddings:all-MiniLM-L6-v2": 381.3
+  },
+  "coverage_by_qualification": {
+    "10th Pass": {
+      "profiles": 14,
+      "profiles_with_results": 14,
+      "mean_precision_at_5": 0.7
+    },
+    "12th Pass": {
+      "profiles": 21,
+      "profiles_with_results": 20,
+      "mean_precision_at_5": 0.819
+    },
+    "Diploma": {
+      "profiles": 14,
+      "profiles_with_results": 14,
+      "mean_precision_at_5": 0.9857
+    },
+    "B.Tech": {
+      "profiles": 14,
+      "profiles_with_results": 14,
+      "mean_precision_at_5": 1.0
+    }
+  },
+  "external_description_diagnostics": {
+    "documents": 5000,
+    "unique_description_vectors": 24,
+    "mean_cosine_between_different_titles": 0.234,
+    "max_cosine_between_different_titles": 0.5025,
+    "titles_compared": 24
+  }
+}
